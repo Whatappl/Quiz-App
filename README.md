@@ -1,86 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fearless Quiz App - Welcome</title>
-<style>
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f7f8fa;
-    color: #222;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    flex-direction: column;
-    text-align: center;
-  }
+# Fearless Quiz App
 
-  h1 {
-    font-size: 2rem;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 4px solid #0ab4ff;
-  }
+**Fearless Quiz App** is an interactive educational quiz application that helps users learn across multiple subjects including Science, Math, History, Geography, English, and General Knowledge.  
 
-  /* Typing animation */
-  @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-  }
+---
 
-  @keyframes blinkCaret {
-    0%, 100% { border-color: transparent }
-    50% { border-color: #0ab4ff }
-  }
+## Features
 
-  .typing {
-    display: inline-block;
-    width: 0;
-    animation: typing 3s steps(40, end) forwards, blinkCaret 0.75s step-end infinite;
-  }
-</style>
-</head>
-<body>
+- Multiple-choice questions from **all subjects**.
+- Randomized questions and options.
+- Highlights **correct answers in green** and **wrong answers in red**.
+- Tracks user score and **total score persists** even after refresh.
+- Automatically fetches new questions when quiz ends.
+- Lightweight and browser-friendly.
 
-<h1 id="typing"></h1>
+---
 
-<script>
-  const messages = [
-    "Welcome To Fearless Quiz Repo",
-    "Learn and Test Your Knowledge!",
-    "Made With ❤️ by Fearless"
-  ];
+## Demo
 
-  const typingEl = document.getElementById("typing");
-  let messageIndex = 0;
+Open the `index.html` file in your browser to start playing the quiz.  
 
-  function typeMessage(message, callback) {
-    typingEl.textContent = "";
-    typingEl.style.width = "0";
-    let i = 0;
+---
 
-    const interval = setInterval(() => {
-      typingEl.textContent += message[i];
-      i++;
-      if (i === message.length) {
-        clearInterval(interval);
-        setTimeout(callback, 1500); // wait before next message
-      }
-    }, 100); // typing speed
-  }
+## How It Works
 
-  function showNextMessage() {
-    typeMessage(messages[messageIndex], () => {
-      messageIndex = (messageIndex + 1) % messages.length;
-      showNextMessage();
-    });
-  }
+1. The app fetches **10 random questions** from a random category using [Open Trivia Database](https://opentdb.com/).
+2. Options for each question are **randomized**.
+3. Users click an option:
+   - Correct → button turns **green**
+   - Wrong → button turns **red**
+4. After a short delay, the next question is displayed.
+5. The **progress bar** shows quiz progression.
+6. **Total score** updates and is saved in localStorage.
 
-  showNextMessage();
-</script>
+---
 
-</body>
-</html>
+## Installation
+
+1. Clone the repository:
+   ```bash
+   https://github.com/Whatappl/Quiz-App
