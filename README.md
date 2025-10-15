@@ -1,6 +1,6 @@
-# Fearless Quiz App
+# Fearless Quiz repo
 
-**Fearless Quiz App** is an interactive educational quiz application that helps users learn across multiple subjects including Science, Math, History, Geography, English, and General Knowledge.  
+**Fearless Quiz repo** is an interactive educational quiz application that helps users learn across multiple subjects including Science, Math, History, Geography, English, and General Knowledge.  
 
 ---
 
