@@ -1,27 +1,676 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fearless Educational Quiz</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FEARLESS XIT GENERATOR</title>
+    <style>
+        :root {
+            --neon-cyan: #00f3ff;
+            --neon-purple: #9d4edd;
+            --accent-green: #00ff66;
+            --bg-dark: #050508;
+            --panel-bg: rgba(10, 10, 16, 0.65);
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #ffffff;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Moving Particle Canvas Background */
+        #bg-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: auto;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            background: var(--panel-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 440px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 
+                        inset 0 0 20px rgba(0, 243, 255, 0.05);
+            text-align: center;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Animated Neon Border Tracing */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 24px;
+            padding: 2px;
+            background: linear-gradient(135deg, #ff758c, transparent, var(--neon-cyan), transparent, #b5179e);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            animation: borderRotate 6s linear infinite;
+        }
+
+        @keyframes borderRotate {
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        .header-logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .header-logo span {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 15px var(--neon-cyan);
+        }
+
+        .system-status {
+            font-size: 0.75rem;
+            color: #62627a;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #00ff66;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #00ff66;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        .cyber-input-group {
+            position: relative;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .cyber-input-group label {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--neon-cyan);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            padding-left: 4px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            background: rgba(5, 5, 10, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 0.95rem;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        .input-wrapper input:focus {
+            outline: none;
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+        }
+
+        .input-wrapper input:disabled {
+            background: #0b0b12;
+            border-color: rgba(255, 255, 255, 0.05);
+            color: #4a4a5a;
+            cursor: not-allowed;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.95rem;
+        }
+
+        /* Action Controls Layout */
+        .action-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .btn-terminal {
+            flex: 1;
+            background: rgba(157, 78, 221, 0.1);
+            border: 1px solid rgba(157, 78, 221, 0.2);
+            color: #9d4edd;
+            padding: 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .btn-terminal:hover {
+            background: rgba(157, 78, 221, 0.25);
+            color: #ffffff;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+            border: none;
+            border-radius: 8px;
+            color: #ffffff;
+            font-weight: bold;
+            letter-spacing: 1px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-family: inherit;
+            transition: transform 0.2s;
+        }
+
+        .btn-submit:hover:not(:disabled) {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+
+        .btn-submit:disabled {
+            background: #1e1e24 !important;
+            color: #43434c !important;
+            box-shadow: none !important;
+            cursor: not-allowed;
+        }
+
+        .btn-green {
+            background: rgba(0, 230, 118, 0.1) !important;
+            border: 1px dashed var(--accent-green) !important;
+            color: var(--accent-green) !important;
+            margin-bottom: 20px;
+        }
+
+        /* Diamonds Matrix Selection Grid */
+        .toggle-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .toggle-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 12px 14px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .toggle-item span { font-size: 0.85rem; }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 34px;
+            height: 20px;
+        }
+
+        .switch input { opacity: 0; width: 0; height: 0; }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            inset: 0;
+            background-color: #272730;
+            transition: .3s;
+            border-radius: 20px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 12px;
+            width: 12px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider { background-color: var(--neon-cyan); }
+        input:checked + .slider:before { transform: translateX(14px); }
+
+        .hidden { display: none !important; }
+
+        /* Sync Console Box UI Elements */
+        #console {
+            background-color: #030305;
+            border: 1px solid rgba(0, 243, 255, 0.15);
+            border-radius: 10px;
+            padding: 18px;
+            text-align: left;
+            font-size: 0.8rem;
+            color: var(--neon-cyan);
+            height: 160px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .console-line { margin-bottom: 6px; opacity: 0; animation: lineOn 0.2s forwards; }
+        @keyframes lineOn { to { opacity: 1; } }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 14px;
+            background-color: var(--neon-cyan);
+            margin-left: 4px;
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        .progress-bar-container {
+            background-color: #111116;
+            border-radius: 20px;
+            height: 6px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+            height: 100%;
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+
+        /* Image Style 1: Text-Based Pre-Login Footer */
+        .network-footer-pre {
+            margin-top: 35px;
+            text-align: center;
+        }
+
+        .footer-link-pre {
+            font-size: 0.72rem;
+            color: #62627a;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 10px auto;
+        }
+
+        .footer-square {
+            width: 8px;
+            height: 8px;
+            background-color: #62627a;
+            display: inline-block;
+        }
+
+        .footer-square.green-sq { background-color: var(--accent-green); }
+
+        /* Image Style 2: Modern Button-Based Post-Login Support Frame */
+        .support-panel-post {
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 25px;
+            text-align: center;
+        }
+
+        .support-title-post {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #ffffff;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .panel-btn {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+
+        .panel-btn-orange {
+            background: rgba(230, 81, 0, 0.06);
+            border: 1px solid rgba(230, 81, 0, 0.3);
+            color: #ff9100;
+        }
+
+        .panel-btn-green {
+            background: rgba(0, 230, 118, 0.06);
+            border: 1px solid rgba(0, 230, 118, 0.3);
+            color: var(--accent-green);
+        }
+    </style>
 </head>
 <body>
-<div class="quiz-container">
- <h1 id="quizHeader">Fearless Educational Quiz</h1>
 
- <div id="progress"><div id="progress-bar"></div></div>
+    <!-- Canvas Matrix Graphics Layer -->
+    <canvas id="bg-canvas"></canvas>
 
- <div id="question-container">
- <div id="question"></div>
- <div id="options"></div>
- </div>
+    <div class="container">
+        
+        <!-- MAIN GATEWAY: Pre-Login Entrance Setup -->
+        <div id="login-module">
+            <div class="header-logo">XIT <span>GENERATOR</span></div>
+            <div class="system-status"><span class="status-dot"></span> SECURITY NODE SECURE</div>
 
- <button id="restartBtn">Restart</button>
- <div class="footer">Made by Fearless 💡</div>
- <div class="scoreDisplay">Total Score: <span id="totalScore">0</span></div>
-</div>
+            <!-- MANDATORY CHANNEL 1.0 UNLOCK SYSTEM -->
+            <button type="button" class="btn-submit btn-green" onclick="unlockKeyField()">
+                📢 CLICK HERE TO JOIN CHANNEL FIRST
+            </button>
+            
+            <div class="cyber-input-group">
+                <label>BYPASS ACCESS TOKEN</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">(🔑)</span>
+                    <input type="password" id="access-token" placeholder="Join channel to type key..." disabled>
+                </div>
+            </div>
 
-<script src="script.js"></script>
+            <div class="action-row">
+                <button type="button" class="btn-terminal" onclick="window.open('https://whatsapp.com/channel/0029VbD11EtAYlUQxZMuK045', '_blank')">FETCH KEY</button>
+                <button type="button" class="btn-terminal" onclick="window.open('https://whatsapp.com/channel/0029VbD11EtAYlUQxZMuK045', '_blank')">BACKUP NODE</button>
+            </div>
+
+            <button id="auth-btn" class="btn-submit" onclick="authenticateGateway()" disabled>INITIALIZE NODE ENTRY</button>
+
+            <!-- Pre-Login Footer UI Layout (As per Image 1) -->
+            <div class="network-footer-pre">
+                <a href="https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E" target="_blank" class="footer-link-pre"><span class="footer-square"></span> OFFICIAL CHANNEL 1.0</a>
+                <a href="https://whatsapp.com/channel/0029VbD11EtAYlUQxZMuK045" target="_blank" class="footer-link-pre"><span class="footer-square"></span> BACKUP CHANNEL 2.0</a>
+                <a href="https://wa.me/2349137895828" target="_blank" class="footer-link-pre" style="color: var(--accent-green);"><span class="footer-square green-sq"></span> CONTACT MOD</a>
+            </div>
+        </div>
+
+        <!-- TARGET AREA: Post-Login Configuration Control Form -->
+        <div id="config-module" class="hidden">
+            <div class="header-logo">NODE <span>CONFIG</span></div>
+            <div class="system-status"><span class="status-dot"></span> SET ASSET ROUTES</div>
+
+            <div class="cyber-input-group">
+                <label>TARGET PLAYER ID</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">(🆔)</span>
+                    <input type="text" id="uid" placeholder="Enter 8-digit Player ID" maxlength="8">
+                </div>
+            </div>
+
+            <div class="cyber-input-group">
+                <label>SELECT DIAMOND AMOUNT</label>
+                <div class="toggle-grid">
+                    <div class="toggle-item"><span>500 💎</span><label class="switch"><input type="checkbox" class="dim-toggle" value="500" onclick="handleExclusiveToggle(this)"><span class="slider"></span></label></div>
+                    <div class="toggle-item"><span>2,500 💎</span><label class="switch"><input type="checkbox" class="dim-toggle" value="2,500" onclick="handleExclusiveToggle(this)"><span class="slider"></span></label></div>
+                    <div class="toggle-item"><span>10,000 💎</span><label class="switch"><input type="checkbox" class="dim-toggle" value="10,000" onclick="handleExclusiveToggle(this)"><span class="slider"></span></label></div>
+                    <div class="toggle-item"><span>50,000 💎</span><label class="switch"><input type="checkbox" class="dim-toggle" value="50,000" onclick="handleExclusiveToggle(this)"><span class="slider"></span></label></div>
+                    <div class="toggle-item"><span>200,000 💎</span><label class="switch"><input type="checkbox" class="dim-toggle" value="200,000" onclick="handleExclusiveToggle(this)"><span class="slider"></span></label></div>
+                    <div class="toggle-item"><span>500,000 💎</span><label class="switch"><input type="checkbox" class="dim-toggle" value="500,000" onclick="handleExclusiveToggle(this)"><span class="slider"></span></label></div>
+                    <div class="toggle-item"><span>1,000,000 💎</span><label class="switch"><input type="checkbox" class="dim-toggle" value="1,000,000" onclick="handleExclusiveToggle(this)"><span class="slider"></span></label></div>
+                    <div class="toggle-item"><span>2,000,000 💎</span><label class="switch"><input type="checkbox" class="dim-toggle" value="2,000,000" onclick="handleExclusiveToggle(this)"><span class="slider"></span></label></div>
+                </div>
+            </div>
+
+            <button type="button" class="btn-submit" style="background: rgba(0, 243, 255, 0.1); border: 1px dashed var(--neon-cyan); margin-bottom: 20px; color: var(--neon-cyan);" onclick="triggerShareVerification()">
+                📢 SHARE TO 5 WHATSAPP GROUPS
+            </button>
+
+            <button id="inject-btn" class="btn-submit" onclick="executeInjectionSequence()" disabled>EXECUTE SYNC INJECTION</button>
+
+            <!-- Post-Login Links Support Display Panel Layout (As per Image 2) -->
+            <div class="support-panel-post">
+                <div class="support-title-post">Official Links & Support</div>
+                <a href="https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E" target="_blank" class="panel-btn panel-btn-orange">📢 Join Official Fearless xit Channel</a>
+                <a href="https://wa.me/2349137895828" target="_blank" class="panel-btn panel-btn-green">💬 Contact Direct Mod Support</a>
+            </div>
+        </div>
+
+        <!-- ENGINE: Real-time Transfer Operations Output Screen -->
+        <div id="processing-module" class="hidden">
+            <div class="header-logo">SYNCING <span>DATA</span></div>
+            <div id="console"></div>
+            <div class="progress-bar-container">
+                <div id="progress" class="progress-bar"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const DECRYPTION_KEY = "FEARLESS-GENERATOR-431";
+        let channelUnlocked = false;
+        let verifiedShares = 0;
+
+        // --- BACKGROUND CODES MATRIX (The moving thing) ---
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let points = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initPoints();
+        }
+
+        function initPoints() {
+            points = [];
+            const count = Math.min(60, Math.floor((canvas.width * canvas.height) / 20000));
+            for(let i=0; i<count; i++) {
+                points.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.8,
+                    vy: (Math.random() - 0.5) * 0.8,
+                    radius: Math.random() * 2 + 1
+                });
+            }
+        }
+
+        function drawBackground() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "rgba(0, 243, 255, 0.3)";
+            ctx.strokeStyle = "rgba(157, 78, 221, 0.04)";
+            
+            points.forEach((p, index) => {
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI*2);
+                ctx.fill();
+
+                for(let j = index + 1; j < points.length; j++) {
+                    let p2 = points[j];
+                    let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if(dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            });
+            requestAnimationFrame(drawBackground);
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        drawBackground();
+
+        // --- GATEWAY ENTRANCE INTERACTIVE ACTIONS ---
+        function unlockKeyField() {
+            channelUnlocked = true;
+            document.getElementById('access-token').disabled = false;
+            document.getElementById('access-token').placeholder = "Enter access token key...";
+            document.getElementById('auth-btn').disabled = false;
+            window.open('https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E', '_blank');
+        }
+
+        function authenticateGateway() {
+            if(!channelUnlocked) {
+                alert("Please complete the action step by clicking the join channel button.");
+                return;
+            }
+
+            const token = document.getElementById('access-token').value.trim();
+
+            if(!token) {
+                alert("Please input the access key token.");
+                return;
+            }
+            if(token !== DECRYPTION_KEY) {
+                alert("Invalid Bypass Access Token.");
+                return;
+            }
+
+            document.getElementById('login-module').classList.add('hidden');
+            document.getElementById('config-module').classList.remove('hidden');
+        }
+
+        function handleExclusiveToggle(box) {
+            document.querySelectorAll('.dim-toggle').forEach(t => { if(t !== box) t.checked = false; });
+        }
+
+        function triggerShareVerification() {
+            verifiedShares++;
+            if(verifiedShares >= 5) {
+                const injectBtn = document.getElementById('inject-btn');
+                injectBtn.disabled = false;
+                injectBtn.style.boxShadow = "0 4px 20px rgba(0, 243, 255, 0.4)";
+            }
+
+            const shareText = `XIT UID DIAMOND GENERATOR 👇🫪\n\n` +
+                              `*🔗Generator Link :* https://fearlessgenerator.netlify.app\n\n` +
+                              `*🔗Update Channel :* https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E\n\n` +
+                              `💬 Share with 5 groups or with your friends so you don't get errors when entering ☑️`;
+
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`, '_blank');
+        }
+
+        function typeLine(box, text, callback) {
+            const line = document.createElement('div');
+            line.className = 'console-line';
+            box.appendChild(line);
+            let i = 0;
+            function run() {
+                if(i < text.length) {
+                    line.textContent += text.charAt(i);
+                    i++;
+                    box.scrollTop = box.scrollHeight;
+                    setTimeout(run, 15);
+                } else if(callback) callback();
+            }
+            run();
+        }
+
+        function executeInjectionSequence() {
+            const idVal = document.getElementById('uid').value.trim();
+            if(!/^\d{8}$/.test(idVal)) {
+                alert("Error: Target Player ID must be exactly 8 numbers.");
+                return;
+            }
+
+            const activeToggle = document.querySelector('.dim-toggle:checked');
+            if(!activeToggle) {
+                alert("Please select a diamond option choice.");
+                return;
+            }
+
+            document.getElementById('config-module').classList.add('hidden');
+            document.getElementById('processing-module').classList.remove('hidden');
+
+            const consoleBox = document.getElementById('console');
+            const progress = document.getElementById('progress');
+
+            const cursor = document.createElement('span');
+            cursor.className = 'cursor';
+            consoleBox.appendChild(cursor);
+
+            const scriptLines = [
+                { text: "> Connecting to secure server networks...", p: 25 },
+                { text: `> Finding Player ID profile maps for: [${idVal}]...`, p: 50 },
+                { text: `> Syncing routes for [${activeToggle.value} Diamonds] data packs...`, p: 75 },
+                { text: "> [SUCCESS] Task finished. Diamond assets added successfully.", p: 100 }
+            ];
+
+            let index = 0;
+            function runScript() {
+                if(index < scriptLines.length) {
+                    if(cursor.parentNode) cursor.parentNode.removeChild(cursor);
+                    typeLine(consoleBox, scriptLines[index].text, () => {
+                        consoleBox.appendChild(cursor);
+                        progress.style.width = scriptLines[index].p + "%";
+                        index++;
+                        setTimeout(runScript, 1000);
+                    });
+                }
+            }
+            setTimeout(runScript, 400);
+        }
+    </script>
 </body>
 </html>
