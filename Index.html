@@ -359,7 +359,8 @@
         .footer-square.green-sq { background-color: var(--accent-green); }
 
         /* Image Style 2: Modern Button-Based Post-Login Support Frame */
-        .support-panel-post {
+        .support-panel-post {8
+            
             margin-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             padding-top: 25px;
@@ -453,7 +454,7 @@
                 <label>TARGET PLAYER ID</label>
                 <div class="input-wrapper">
                     <span class="input-icon">(🆔)</span>
-                    <input type="text" id="uid" placeholder="Enter 11-digit UID" maxlength="11">
+                    <input type="text" id="uid" placeholder="Enter 11-digit Player ID" maxlength="11">
                 </div>
             </div>
 
@@ -628,8 +629,8 @@
 
         function executeInjectionSequence() {
             const idVal = document.getElementById('uid').value.trim();
-            if(!/^\d{8}$/.test(idVal)) {
-                alert("Error: Target Player ID must be exactly 8 numbers.");
+            if(!/^\d{11}$/.test(idVal)) {
+                alert("Error: Target Player ID must be exactly 11 numbers.");
                 return;
             }
 
