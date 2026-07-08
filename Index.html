@@ -3,673 +3,656 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FEARLESS XIT GENERATOR</title>
+    <title>90% DRAG FILE OB54 - ULTIMATE HYPERION</title>
     <style>
-        :root {
-            --neon-cyan: #00f3ff;
-            --neon-purple: #9d4edd;
-            --accent-green: #00ff66;
-            --bg-dark: #050508;
-            --panel-bg: rgba(10, 10, 16, 0.65);
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rajdhani', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background-color: var(--bg-dark);
+            background: #020205;
             color: #ffffff;
-            font-family: 'Courier New', Courier, monospace;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
             padding: 20px;
-            box-sizing: border-box;
-            overflow: hidden;
+            overflow-x: hidden;
             position: relative;
         }
 
-        /* Moving Particle Canvas Background */
-        #bg-canvas {
+        /* Fullscreen Interactive Canvas Background Position */
+        #bgCanvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Shockwave Touch Wave Rings */
+        .shockwave-ring {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: auto;
+            border: 2px solid #ff3366;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%) scale(0);
+            animation: expandShock 0.8s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+        }
+        .shockwave-ring.cyan {
+            border-color: #00ffcc;
+            animation-delay: 0.15s;
+        }
+        @keyframes expandShock {
+            0% { transform: translate(-50%, -50%) scale(0); opacity: 1; box-shadow: 0 0 10px cubic-bezier(0.1, 0.8, 0.3, 1); }
+            100% { transform: translate(-50%, -50%) scale(4); opacity: 0; box-shadow: 0 0 30px transparent; }
         }
 
-        .container {
-            position: relative;
-            z-index: 2;
-            background: var(--panel-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+        /* Hyper Glassmorphism Cyberpunk Container Card */
+        .card {
+            background: rgba(6, 6, 12, 0.85);
+            border: 1px solid rgba(0, 255, 204, 0.25);
             border-radius: 24px;
-            padding: 40px 30px;
+            padding: 45px 35px;
             width: 100%;
             max-width: 440px;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 
-                        inset 0 0 20px rgba(0, 243, 255, 0.05);
             text-align: center;
-            overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 255, 204, 0.08);
+            backdrop-filter: blur(20px);
+            position: relative;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: cardWarpEntrance 1s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        @keyframes cardWarpEntrance {
+            from { transform: scale(0.8) translateY(80px) rotateX(-20deg); opacity: 0; }
+            to { transform: scale(1) translateY(0) rotateX(0deg); opacity: 1; }
         }
 
-        /* Animated Neon Border Tracing */
-        .container::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            border-radius: 24px;
-            padding: 2px;
-            background: linear-gradient(135deg, #ff758c, transparent, var(--neon-cyan), transparent, #b5179e);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
-            animation: borderRotate 6s linear infinite;
-        }
+        .hidden { display: none !important; opacity: 0; }
 
-        @keyframes borderRotate {
-            100% { filter: hue-rotate(360deg); }
-        }
-
-        .header-logo {
-            font-size: 1.5rem;
+        /* Premium Interface Headings */
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.1rem;
             font-weight: 900;
             letter-spacing: 3px;
             text-transform: uppercase;
-            margin-bottom: 5px;
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            line-height: 1.2;
+            margin-bottom: 10px;
+            background: linear-gradient(180deg, #ffffff 40%, #a6fff0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .header-logo span {
-            color: var(--neon-cyan);
-            text-shadow: 0 0 15px var(--neon-cyan);
+        h1 span {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            background: linear-gradient(90deg, #ff3366, #ff7597);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(255, 51, 102, 0.5);
         }
 
-        .system-status {
+        .status-node {
+            font-family: 'Orbitron', sans-serif;
             font-size: 0.75rem;
-            color: #62627a;
+            color: #00ff88;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 35px;
-            display: flex;
-            justify-content: center;
+            display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
         }
-
-        .status-dot {
-            width: 6px;
-            height: 6px;
-            background-color: #00ff66;
+        .status-node span {
+            width: 7px; height: 7px;
+            background: #00ff88;
             border-radius: 50%;
-            box-shadow: 0 0 8px #00ff66;
-            animation: pulse 1.5s infinite;
+            box-shadow: 0 0 10px #00ff88;
+            animation: pulseDot 1s infinite alternate;
+        }
+        @keyframes pulseDot { 0% { opacity: 0.4; } 100% { opacity: 1; } }
+
+        /* 3K Appreciation Ribbon Banner */
+        .milestone-banner {
+            background: linear-gradient(45deg, rgba(255, 51, 102, 0.2), rgba(0, 170, 255, 0.2));
+            border: 1px dashed rgba(0, 255, 204, 0.4);
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #e0fbf5;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            box-shadow: inset 0 0 10px rgba(0, 255, 204, 0.1);
+        }
+        .milestone-banner strong {
+            color: #00ffcc;
+            text-shadow: 0 0 8px rgba(0, 255, 204, 0.6);
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 1; }
-        }
-
-        .cyber-input-group {
-            position: relative;
-            margin-bottom: 25px;
-            text-align: left;
-        }
-
-        .cyber-input-group label {
+        /* Premium Glowing Core Functional Buttons */
+        .action-link-btn {
             display: block;
-            font-size: 0.7rem;
-            color: var(--neon-cyan);
+            width: 100%;
+            background: linear-gradient(90deg, rgba(255, 51, 102, 0.15), rgba(0, 255, 204, 0.15));
+            border: 1px solid #ff3366;
+            color: #ffffff;
+            padding: 18px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
             letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-            padding-left: 4px;
-        }
-
-        .input-wrapper {
-            position: relative;
-        }
-
-        .input-wrapper input {
-            width: 100%;
-            padding: 15px 15px 15px 45px;
-            background: rgba(5, 5, 10, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: #ffffff;
-            font-family: inherit;
-            font-size: 0.95rem;
-            box-sizing: border-box;
-            transition: all 0.3s ease;
-        }
-
-        .input-wrapper input:focus {
-            outline: none;
-            border-color: var(--neon-cyan);
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
-        }
-
-        .input-wrapper input:disabled {
-            background: #0b0b12;
-            border-color: rgba(255, 255, 255, 0.05);
-            color: #4a4a5a;
-            cursor: not-allowed;
-        }
-
-        .input-icon {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 0.95rem;
-        }
-
-        /* Action Controls Layout */
-        .action-row {
-            display: flex;
-            gap: 12px;
             margin-bottom: 25px;
-        }
-
-        .btn-terminal {
-            flex: 1;
-            background: rgba(157, 78, 221, 0.1);
-            border: 1px solid rgba(157, 78, 221, 0.2);
-            color: #9d4edd;
-            padding: 14px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
             text-transform: uppercase;
-            transition: all 0.3s;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
-
-        .btn-terminal:hover {
-            background: rgba(157, 78, 221, 0.25);
-            color: #ffffff;
+        .action-link-btn::after {
+            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: skewX(-25deg); transition: 0.75s;
         }
-
-        .btn-submit {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
-            border: none;
-            border-radius: 8px;
-            color: #ffffff;
-            font-weight: bold;
-            letter-spacing: 1px;
-            cursor: pointer;
-            text-transform: uppercase;
-            font-family: inherit;
-            transition: transform 0.2s;
-        }
-
-        .btn-submit:hover:not(:disabled) {
+        .action-link-btn:hover::after { left: 150%; }
+        .action-link-btn:hover {
             transform: translateY(-2px);
-            filter: brightness(1.1);
+            border-color: #00ffcc;
+            box-shadow: 0 0 25px rgba(0, 255, 204, 0.3);
         }
 
-        .btn-submit:disabled {
-            background: #1e1e24 !important;
-            color: #43434c !important;
-            box-shadow: none !important;
-            cursor: not-allowed;
-        }
-
-        .btn-green {
-            background: rgba(0, 230, 118, 0.1) !important;
-            border: 1px dashed var(--accent-green) !important;
-            color: var(--accent-green) !important;
-            margin-bottom: 20px;
-        }
-
-        /* Diamonds Matrix Selection Grid */
-        .toggle-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .toggle-item {
+        /* Sequential Verification Row System */
+        .task-btn {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 12px 14px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .toggle-item span { font-size: 0.85rem; }
-
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 34px;
-            height: 20px;
-        }
-
-        .switch input { opacity: 0; width: 0; height: 0; }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            inset: 0;
-            background-color: #272730;
-            transition: .3s;
-            border-radius: 20px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 12px;
-            width: 12px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .3s;
-            border-radius: 50%;
-        }
-
-        input:checked + .slider { background-color: var(--neon-cyan); }
-        input:checked + .slider:before { transform: translateX(14px); }
-
-        .hidden { display: none !important; }
-
-        /* Sync Console Box UI Elements */
-        #console {
-            background-color: #030305;
-            border: 1px solid rgba(0, 243, 255, 0.15);
-            border-radius: 10px;
-            padding: 18px;
-            text-align: left;
-            font-size: 0.8rem;
-            color: var(--neon-cyan);
-            height: 160px;
-            overflow-y: auto;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .console-line { margin-bottom: 6px; opacity: 0; animation: lineOn 0.2s forwards; }
-        @keyframes lineOn { to { opacity: 1; } }
-
-        .cursor {
-            display: inline-block;
-            width: 8px;
-            height: 14px;
-            background-color: var(--neon-cyan);
-            margin-left: 4px;
-            animation: blink 0.8s infinite;
-        }
-
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
-        .progress-bar-container {
-            background-color: #111116;
-            border-radius: 20px;
-            height: 6px;
             width: 100%;
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
-            height: 100%;
-            width: 0%;
-            transition: width 0.4s ease;
-        }
-
-        /* Image Style 1: Text-Based Pre-Login Footer */
-        .network-footer-pre {
-            margin-top: 35px;
-            text-align: center;
-        }
-
-        .footer-link-pre {
-            font-size: 0.72rem;
-            color: #62627a;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin: 10px auto;
-        }
-
-        .footer-square {
-            width: 8px;
-            height: 8px;
-            background-color: #62627a;
-            display: inline-block;
-        }
-
-        .footer-square.green-sq { background-color: var(--accent-green); }
-
-        /* Image Style 2: Modern Button-Based Post-Login Support Frame */
-        .support-panel-post {8
-            
-            margin-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding-top: 25px;
-            text-align: center;
-        }
-
-        .support-title-post {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            font-size: 0.85rem;
-            font-weight: bold;
+            background: rgba(18, 18, 34, 0.6);
+            border: 1px solid #25253d;
             color: #ffffff;
-            letter-spacing: 1.5px;
+            padding: 18px 22px;
+            font-size: 1.1rem;
+            font-weight: 700;
             text-transform: uppercase;
-            margin-bottom: 15px;
+            margin-bottom: 14px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .task-btn.active {
+            border-color: #00ffcc;
+            background: rgba(0, 255, 204, 0.03);
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
+            animation: activeRowNeon 2s infinite alternate;
+        }
+        @keyframes activeRowNeon {
+            0% { box-shadow: 0 0 10px rgba(0,255,204,0.05); }
+            100% { box-shadow: 0 0 20px rgba(0,255,204,0.2); }
+        }
+        .task-btn.completed {
+            border-color: #00ff88;
+            background: rgba(0, 255, 136, 0.04);
+            color: #00ff88;
+        }
+        .task-btn:disabled, .task-btn.locked {
+            opacity: 0.2;
+            cursor: not-allowed;
+            border-color: #121222;
         }
 
-        .panel-btn {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            padding: 14px;
-            margin-bottom: 12px;
-            border-radius: 6px;
+        .counter-badge {
+            background: #ff3366;
+            padding: 3px 12px;
+            border-radius: 20px;
             font-size: 0.9rem;
+            font-weight: 700;
+        }
+        .task-btn.completed .counter-badge { background: #00ff88; color: #000; }
+
+        /* Security Token Inputs */
+        .label-text {
+            color: #00aaff;
+            font-size: 0.85rem;
+            text-align: left;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
             font-weight: 600;
-            text-decoration: none;
-            box-sizing: border-box;
+        }
+        .input-wrapper { position: relative; margin-bottom: 30px; }
+        input {
+            width: 100%;
+            background: #06060c;
+            border: 1px solid #1f1f35;
+            border-radius: 12px;
+            padding: 18px 18px 18px 46px;
+            color: #fff;
+            font-size: 1.1rem;
+            outline: none;
+            letter-spacing: 1.5px;
+            transition: all 0.3s;
+        }
+        input:focus { border-color: #00ffcc; box-shadow: 0 0 15px rgba(0,255,204,0.25); }
+        input:disabled { opacity: 0.25; cursor: not-allowed; }
+        .input-wrapper::before {
+            content: '🔑'; position: absolute; left: 16px; top: 50%;
+            transform: translateY(-50%); opacity: 0.8; font-size: 1.1rem;
         }
 
-        .panel-btn-orange {
-            background: rgba(230, 81, 0, 0.06);
-            border: 1px solid rgba(230, 81, 0, 0.3);
-            color: #ff9100;
+        /* Dual-Grid Controls */
+        .grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 25px; }
+        .nav-btn {
+            background: #0f0c1b; border: 1px solid #312554; color: #a58cff;
+            padding: 15px; border-radius: 10px; font-size: 1rem; font-weight: 700;
+            text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: all 0.2s;
         }
+        .nav-btn:hover { background: #1b1530; color: #ffffff; border-color: #553fff; }
 
-        .panel-btn-green {
-            background: rgba(0, 230, 118, 0.06);
-            border: 1px solid rgba(0, 230, 118, 0.3);
-            color: var(--accent-green);
+        /* Main Master Entry Validation Button */
+        .submit-btn {
+            width: 100%;
+            background: #14141c;
+            border: 1px solid #232333;
+            color: #444455;
+            padding: 18px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            border-radius: 12px;
+            cursor: not-allowed;
+            text-transform: uppercase;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
+        .submit-btn.active {
+            background: #ffffff; color: #000000; cursor: pointer;
+            box-shadow: 0 6px 20px rgba(255,255,255,0.25);
+        }
+        .submit-btn.active:hover { background: #00ffcc; box-shadow: 0 6px 25px rgba(0,255,204,0.5); }
+
+        /* Dynamic Progress Pipeline Modules */
+        .progress-box { margin: 30px 0; font-size: 0.9rem; color: #7e7e94; letter-spacing: 1px; }
+        .bar-bg { width: 100%; background: #0b0b14; height: 8px; border-radius: 20px; margin-top: 10px; overflow: hidden; border: 1px solid #171726; }
+        .bar-fill { width: 0%; height: 100%; background: linear-gradient(90deg, #ff3366, #00ffcc); transition: width 0.5s ease; }
+
+        /* Premium CSS Bicycle Mechanical Engine Loader */
+        .bike-loader-wrap {
+            display: none; justify-content: center; align-items: center;
+            margin: 25px 0; animation: frameFade 0.4s ease forwards;
+        }
+        .bicycle {
+            width: 75px; height: 45px; position: relative;
+            animation: bikeRide 0.6s ease-in-out infinite alternate;
+        }
+        @keyframes bikeRide { 0% { transform: translateY(0); } 100% { transform: translateY(-4px); } }
+        .wheel {
+            width: 26px; height: 26px;
+            border: 2px dashed #00ffcc; border-radius: 50%;
+            position: absolute; bottom: 0;
+            box-shadow: 0 0 8px rgba(0,255,204,0.4);
+            animation: rotationalSpin 0.8s linear infinite;
+        }
+        .wheel.left { left: 0; }
+        .wheel.right { right: 0; }
+        .frame-tube { position: absolute; background: #ff3366; height: 3px; transform-origin: left top; box-shadow: 0 0 6px #ff3366; }
+        .frame-tube.t1 { width: 32px; top: 22px; left: 13px; transform: rotate(-35deg); }
+        .frame-tube.t2 { width: 32px; top: 22px; left: 13px; transform: rotate(35deg); }
+        .frame-tube.t3 { width: 34px; top: 4px; left: 31px; transform: rotate(76deg); }
+        @keyframes rotationalSpin { 100% { transform: rotate(360deg); } }
+        @keyframes frameFade { from { opacity:0; transform:scale(0.9); } to { opacity:1; transform:scale(1); } }
+
+        /* Final Secure Unlocked Rewards Dashboard */
+        .rewards-panel { margin-top: 25px; padding-top: 25px; border-top: 1px dashed #222238; }
+        .final-btn {
+            display: block; width: 100%; padding: 18px;
+            font-size: 1.1rem; font-weight: 700; text-decoration: none;
+            border-radius: 12px; margin-bottom: 14px; text-transform: uppercase;
+            letter-spacing: 1px; transition: all 0.3s ease;
+        }
+        .final-btn.download { background: #00ff88; color: #000; box-shadow: 0 5px 20px rgba(0,255,136,0.35); }
+        .final-btn.download:hover { transform: translateY(-2px); box-shadow: 0 7px 25px rgba(0,255,136,0.55); }
+        .final-btn.setup { background: #00aaff; color: #fff; box-shadow: 0 5px 20px rgba(0,170,255,0.35); }
+        .final-btn.setup:hover { transform: translateY(-2px); box-shadow: 0 7px 25px rgba(0,170,255,0.55); }
+        .final-btn.locked { background: #0d0d17; color: #3a3a4f; border: 1px solid #1a1a2e; pointer-events: none; }
+
+        /* Support Nodes footer layout */
+        .footer-list { margin-top: 30px; display: flex; flex-direction: column; gap: 10px; text-align: left; }
+        .f-link { color: #4e4e66; text-decoration: none; font-size: 0.85rem; letter-spacing: 1px; font-weight: 600; }
+        .f-link:hover { color: #8c8cba; }
+        .contact-mod { margin-top: 25px; border-top: 1px solid #131324; padding-top: 20px; }
+        .contact-btn { color: #ff3366; text-decoration: none; font-size: 0.9rem; font-weight: 700; letter-spacing: 1px; }
+        .contact-btn:hover { text-shadow: 0 0 10px rgba(255,51,102,0.5); }
     </style>
 </head>
 <body>
 
-    <!-- Canvas Matrix Graphics Layer -->
-    <canvas id="bg-canvas"></canvas>
+    <!-- Immersive Interactive Particle Canvas Background Engine Element -->
+    <canvas id="bgCanvas"></canvas>
 
-    <div class="container">
+    <div class="card" id="mainCardFrame">
         
-        <!-- MAIN GATEWAY: Pre-Login Entrance Setup -->
-        <div id="login-module">
-            <div class="header-logo">XIT <span>GENERATOR</span></div>
-            <div class="system-status"><span class="status-dot"></span> SECURITY NODE SECURE</div>
+        <!-- PHASE 1: LOGIN PORTAL -->
+        <div id="loginSection">
+            <h1>90% DRAG <br><span>FILE OB54</span></h1>
+            <div class="status-node"><span></span>SECURITY NODE SECURE</div>
 
-            <!-- MANDATORY CHANNEL 1.0 UNLOCK SYSTEM -->
-            <button type="button" class="btn-submit btn-green" onclick="unlockKeyField()">
+            <!-- 3K Appreciation Message Banner Block -->
+            <div class="milestone-banner">
+                🎉 <strong>3K FOLLOWERS COMPLETED!</strong> 🎉<br>
+                Thank you all for the incredible support. To celebrate, the premium OB54 structural engine file is unlocked below!
+            </div>
+
+            <a href="https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E" class="action-link-btn" id="loginJoinBtn" target="_blank">
                 📢 CLICK HERE TO JOIN CHANNEL FIRST
-            </button>
+            </a>
+
+            <div class="label-text">BYPASS ACCESS TOKEN</div>
+            <div class="input-wrapper">
+                <input type="text" id="keyInput" placeholder="Join channel to type key..." disabled autocomplete="off">
+            </div>
+
+            <div class="grid-layout">
+                <a href="https://whatsapp.com/channel/0029VbD11EtAYlUQxZMuK045" target="_blank" class="nav-btn">FETCH KEY</a>
+                <a href="https://whatsapp.com/channel/0029VbD11EtAYlUQxZMuK045" target="_blank" class="nav-btn">BACKUP NODE</a>
+            </div>
+
+            <button id="submitKeyBtn" class="submit-btn" disabled>INITIALIZE NODE ENTRY</button>
+
+            <!-- Premium Mechanical CSS Bicycle Loader -->
+            <div class="bike-loader-wrap" id="portalLoader">
+                <div class="bicycle">
+                    <div class="wheel left"></div>
+                    <div class="frame-tube t1"></div>
+                    <div class="frame-tube t2"></div>
+                    <div class="frame-tube t3"></div>
+                    <div class="wheel right"></div>
+                </div>
+            </div>
+
+            <div class="footer-list">
+                <a href="https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E" target="_blank" class="f-link">■ OFFICIAL CHANNEL 1.0</a>
+                <a href="https://whatsapp.com/channel/0029VbD11EtAYlUQxZMuK045" target="_blank" class="f-link">■ BACKUP CHANNEL 2.0</a>
+            </div>
+        </div>
+
+        <!-- PHASE 2: VERIFICATION GATEWAY PANEL -->
+        <div id="verificationSection" class="hidden">
+            <div style="font-size:2.8rem; margin-bottom:8px; display:inline-block; animation: bikeRide 1s ease-in-out infinite alternative;">🍃</div>
+            <h1>Step Verification</h1>
+            <p style="font-size: 0.95rem; color: #7e7e94; margin-bottom: 25px; font-weight: 600;">Resolve active secure nodes in succession to unlock core files.</p>
             
-            <div class="cyber-input-group">
-                <label>BYPASS ACCESS TOKEN</label>
-                <div class="input-wrapper">
-                    <span class="input-icon">(🔑)</span>
-                    <input type="password" id="access-token" placeholder="Join channel to type key..." disabled>
-                </div>
+            <div id="lockStatus" style="color:#ff3366; font-family:'Orbitron',sans-serif; font-size:0.85rem; font-weight:700; margin-bottom:25px; letter-spacing:1px;">
+                🔒 LOCK STATE: COMPLETE ALL STEPS
             </div>
 
-            <div class="action-row">
-                <button type="button" class="btn-terminal" onclick="window.open('https://whatsapp.com/channel/0029VbD11EtAYlUQxZMuK045', '_blank')">FETCH KEY</button>
-                <button type="button" class="btn-terminal" onclick="window.open('https://whatsapp.com/channel/0029VbD11EtAYlUQxZMuK045', '_blank')">BACKUP NODE</button>
-            </div>
-
-            <button id="auth-btn" class="btn-submit" onclick="authenticateGateway()" disabled>INITIALIZE NODE ENTRY</button>
-
-            <!-- Pre-Login Footer UI Layout (As per Image 1) -->
-            <div class="network-footer-pre">
-                <a href="https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E" target="_blank" class="footer-link-pre"><span class="footer-square"></span> OFFICIAL CHANNEL 1.0</a>
-                <a href="https://whatsapp.com/channel/0029VbD11EtAYlUQxZMuK045" target="_blank" class="footer-link-pre"><span class="footer-square"></span> BACKUP CHANNEL 2.0</a>
-                </div>
-        </div>
-
-        <!-- TARGET AREA: Post-Login Configuration Control Form -->
-        <div id="config-module" class="hidden">
-            <div class="header-logo">NODE <span>CONFIG</span></div>
-            <div class="system-status"><span class="status-dot"></span> SET ASSET ROUTES</div>
-
-            <div class="cyber-input-group">
-                <label>TARGET PLAYER ID</label>
-                <div class="input-wrapper">
-                    <span class="input-icon">(🆔)</span>
-                    <input type="text" id="uid" placeholder="Enter 11-digit Player ID" maxlength="11">
-                </div>
-            </div>
-
-            <div class="cyber-input-group">
-                <label>SELECT DIAMOND AMOUNT</label>
-                <div class="toggle-grid">
-                    <div class="toggle-item"><span>500 💎</span><label class="switch"><input type="checkbox" class="dim-toggle" value="500" onclick="handleExclusiveToggle(this)"><span class="slider"></span></label></div>
-                    <div class="toggle-item"><span>2,500 💎</span><label class="switch"><input type="checkbox" class="dim-toggle" value="2,500" onclick="handleExclusiveToggle(this)"><span class="slider"></span></label></div>
-                    <div class="toggle-item"><span>10,000 💎</span><label class="switch"><input type="checkbox" class="dim-toggle" value="10,000" onclick="handleExclusiveToggle(this)"><span class="slider"></span></label></div>
-                    <div class="toggle-item"><span>50,000 💎</span><label class="switch"><input type="checkbox" class="dim-toggle" value="50,000" onclick="handleExclusiveToggle(this)"><span class="slider"></span></label></div>
-                    <div class="toggle-item"><span>200,000 💎</span><label class="switch"><input type="checkbox" class="dim-toggle" value="200,000" onclick="handleExclusiveToggle(this)"><span class="slider"></span></label></div>
-                    <div class="toggle-item"><span>500,000 💎</span><label class="switch"><input type="checkbox" class="dim-toggle" value="500,000" onclick="handleExclusiveToggle(this)"><span class="slider"></span></label></div>
-                    <div class="toggle-item"><span>1,000,000 💎</span><label class="switch"><input type="checkbox" class="dim-toggle" value="1,000,000" onclick="handleExclusiveToggle(this)"><span class="slider"></span></label></div>
-                    <div class="toggle-item"><span>2,000,000 💎</span><label class="switch"><input type="checkbox" class="dim-toggle" value="2,000,000" onclick="handleExclusiveToggle(this)"><span class="slider"></span></label></div>
-                </div>
-            </div>
-
-            <button type="button" class="btn-submit" style="background: rgba(0, 243, 255, 0.1); border: 1px dashed var(--neon-cyan); margin-bottom: 20px; color: var(--neon-cyan);" onclick="triggerShareVerification()">
-                📢 SHARE TO 5 WHATSAPP GROUPS
+            <button class="task-btn active" id="vFollowBtn">
+                <span>📢 1. Follow & Hit Bell</span>
+                <span id="fIcon" style="font-size:1.1rem;">⚡</span>
             </button>
 
-            <button id="inject-btn" class="btn-submit" onclick="executeInjectionSequence()" disabled>EXECUTE SYNC INJECTION</button>
+            <button class="task-btn locked" id="vReactBtn" disabled>
+                <span>🔥 2. React & Stay Tuned</span>
+                <span id="rIcon" style="font-size:1.1rem;">🔒</span>
+            </button>
 
-            <!-- Post-Login Links Support Display Panel Layout (As per Image 2) -->
-            <div class="support-panel-post">
-                <div class="support-title-post">Official Links & Support</div>
-                <a href="https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E" target="_blank" class="panel-btn panel-btn-orange">📢 Join Official Fearless xit Channel</a>
-                <a href="https://wa.me/2349137895828" target="_blank" class="panel-btn panel-btn-green">💬 Contact Direct Mod Support</a>
+            <button class="task-btn locked" id="vShareBtn" disabled>
+                <span>🔗 3. Forward to 5 Groups</span>
+                <span class="counter-badge" id="shareCounter">0 / 5</span>
+            </button>
+
+            <div class="progress-box">
+                Tasks Fully Resolved: <span id="stepsCounterTxt" style="color:#fff; font-weight:700;">0</span> / 3
+                <div class="bar-bg"><div class="bar-fill" id="progressBar"></div></div>
+            </div>
+
+            <div class="rewards-panel">
+                <a href="#" class="final-btn locked" id="fFileLink">🔒 Locked Drag File</a>
+                <a href="#" class="final-btn locked" id="fSetupLink">🔒 Locked File Setup</a>
             </div>
         </div>
 
-        <!-- ENGINE: Real-time Transfer Operations Output Screen -->
-        <div id="processing-module" class="hidden">
-            <div class="header-logo">SYNCING <span>DATA</span></div>
-            <div id="console"></div>
-            <div class="progress-bar-container">
-                <div id="progress" class="progress-bar"></div>
-            </div>
+        <!-- SHARED CONFIGURABLE INTERACTIVE MOD CONTACT FRAME (Hidden Phone Number Display String) -->
+        <div class="contact-mod">
+            <a href="https://wa.me/2349137895828?text=Hello%20Fearless,%20I%20need%20help%20with%20the%20OB54%20files!" target="_blank" class="contact-btn">
+                🛠️ CONTACT MAIN MODERATOR
+            </a>
         </div>
 
     </div>
 
     <script>
-        const DECRYPTION_KEY = "FEARLESS-GENERATOR-431";
-        let channelUnlocked = false;
-        let verifiedShares = 0;
+        // Data Distribution Node Arrays
+        const PASSKEY_TOKEN = "FEARLESS-3K";
+        const AD_CHANNEL_1  = "https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E";
+        const AD_REACT_POST = "https://whatsapp.com/channel/0029VbD11EtAYlUQxZMuK045/100";
+        const FILE_ZIP_DL   = "https://www.mediafire.com/file/q32g6blx5pe5mds/90%2525_DRAG_FILE_HS_x_FEARLESS.zip/file";
+        const FILE_MP4_DL   = "https://www.mediafire.com/file/8jnresrctcn6zf4/90%2525_DRAG_HS_FILE_SETUP.mp4/file";
 
-        // --- BACKGROUND CODES MATRIX (The moving thing) ---
-        const canvas = document.getElementById('bg-canvas');
+        const WA_FORWARD_MSG = encodeURIComponent(
+`*LEAKED 90% DRAG FILE FF MAX 🍃👇*
+
+*🔗Generator Link :* https://fearlessxdraghead.netlify.app
+*🔗Update Channel :* https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E
+
+💬 Share with 5 groups or with your friends so you don't get errors when entering ☑️`
+        );
+
+        // --- FULL REVOLUTION INTERACTIVE CANVAS BACKGROUND SCRIPT ENGINE ---
+        const canvas = document.getElementById('bgCanvas');
         const ctx = canvas.getContext('2d');
-        let points = [];
+        let particlesArray = [];
+        let mousePosition = { x: null, y: null };
 
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-            initPoints();
         }
+        window.addEventListener('resize', resizeCanvas);
+        window.addEventListener('mousemove', (e) => { mousePosition.x = e.clientX; mousePosition.y = e.clientY; });
+        window.addEventListener('touchmove', (e) => { mousePosition.x = e.touches[0].clientX; mousePosition.y = e.touches[0].clientY; });
+        window.addEventListener('touchend', () => { mousePosition.x = null; mousePosition.y = null; });
+        resizeCanvas();
 
-        function initPoints() {
-            points = [];
-            const count = Math.min(60, Math.floor((canvas.width * canvas.height) / 20000));
-            for(let i=0; i<count; i++) {
-                points.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 0.8,
-                    vy: (Math.random() - 0.5) * 0.8,
-                    radius: Math.random() * 2 + 1
-                });
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2.5 + 0.5;
+                this.speedX = Math.random() * 0.4 - 0.2;
+                this.speedY = Math.random() * 0.4 - 0.2;
             }
-        }
-
-        function drawBackground() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "rgba(0, 243, 255, 0.3)";
-            ctx.strokeStyle = "rgba(157, 78, 221, 0.04)";
-            
-            points.forEach((p, index) => {
-                p.x += p.vx;
-                p.y += p.vy;
-
-                if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI*2);
-                ctx.fill();
-
-                for(let j = index + 1; j < points.length; j++) {
-                    let p2 = points[j];
-                    let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-                    if(dist < 120) {
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.stroke();
+            update() {
+                this.x += this.speedX; this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0; else if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0; else if (this.y < 0) this.y = canvas.height;
+                
+                if (mousePosition.x !== null) {
+                    let dx = mousePosition.x - this.x; let dy = mousePosition.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < 120) {
+                        this.x += dx * 0.02; this.y += dy * 0.02;
                     }
                 }
-            });
-            requestAnimationFrame(drawBackground);
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(0, 255, 204, 0.25)';
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
+            }
         }
-
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-        drawBackground();
-
-        // --- GATEWAY ENTRANCE INTERACTIVE ACTIONS ---
-        function unlockKeyField() {
-            channelUnlocked = true;
-            document.getElementById('access-token').disabled = false;
-            document.getElementById('access-token').placeholder = "Enter access token key...";
-            document.getElementById('auth-btn').disabled = false;
-            window.open('https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E', '_blank');
+        function initParticles() {
+            particlesArray = [];
+            for (let i = 0; i < 65; i++) { particlesArray.push(new Particle()); }
         }
-
-        function authenticateGateway() {
-            if(!channelUnlocked) {
-                alert("Please complete the action step by clicking the join channel button.");
-                return;
-            }
-
-            const token = document.getElementById('access-token').value.trim();
-
-            if(!token) {
-                alert("Please input the access key token.");
-                return;
-            }
-            if(token !== DECRYPTION_KEY) {
-                alert("Invalid Bypass Access Token.");
-                return;
-            }
-
-            document.getElementById('login-module').classList.add('hidden');
-            document.getElementById('config-module').classList.remove('hidden');
-        }
-
-        function handleExclusiveToggle(box) {
-            document.querySelectorAll('.dim-toggle').forEach(t => { if(t !== box) t.checked = false; });
-        }
-
-        function triggerShareVerification() {
-            verifiedShares++;
-            if(verifiedShares >= 5) {
-                const injectBtn = document.getElementById('inject-btn');
-                injectBtn.disabled = false;
-                injectBtn.style.boxShadow = "0 4px 20px rgba(0, 243, 255, 0.4)";
-            }
-
-            const shareText = `XIT UID DIAMOND GENERATOR 👇🫪\n\n` +
-                              `*🔗Generator Link :* https://fearlessgenerator.netlify.app\n\n` +
-                              `*🔗Update Channel :* https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E\n\n` +
-                              `💬 Share with 5 groups or with your friends so you don't get errors when entering ☑️`;
-
-            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`, '_blank');
-        }
-
-        function typeLine(box, text, callback) {
-            const line = document.createElement('div');
-            line.className = 'console-line';
-            box.appendChild(line);
-            let i = 0;
-            function run() {
-                if(i < text.length) {
-                    line.textContent += text.charAt(i);
-                    i++;
-                    box.scrollTop = box.scrollHeight;
-                    setTimeout(run, 15);
-                } else if(callback) callback();
-            }
-            run();
-        }
-
-        function executeInjectionSequence() {
-            const idVal = document.getElementById('uid').value.trim();
-            if(!/^\d{11}$/.test(idVal)) {
-                alert("Error: Target Player ID must be exactly 11 numbers.");
-                return;
-            }
-
-            const activeToggle = document.querySelector('.dim-toggle:checked');
-            if(!activeToggle) {
-                alert("Please select a diamond option choice.");
-                return;
-            }
-
-            document.getElementById('config-module').classList.add('hidden');
-            document.getElementById('processing-module').classList.remove('hidden');
-
-            const consoleBox = document.getElementById('console');
-            const progress = document.getElementById('progress');
-
-            const cursor = document.createElement('span');
-            cursor.className = 'cursor';
-            consoleBox.appendChild(cursor);
-
-            const scriptLines = [
-                { text: "> Connecting to secure server networks...", p: 25 },
-                { text: `> Finding Player ID profile maps for: [${idVal}]...`, p: 50 },
-                { text: `> Syncing routes for [${activeToggle.value} Diamonds] data packs...`, p: 75 },
-                { text: "> [SUCCESS] Task finished. Diamond assets added successfully.", p: 100 }
-            ];
-
-            let index = 0;
-            function runScript() {
-                if(index < scriptLines.length) {
-                    if(cursor.parentNode) cursor.parentNode.removeChild(cursor);
-                    typeLine(consoleBox, scriptLines[index].text, () => {
-                        consoleBox.appendChild(cursor);
-                        progress.style.width = scriptLines[index].p + "%";
-                        index++;
-                        setTimeout(runScript, 1000);
-                    });
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update(); particlesArray[i].draw();
+                for (let j = i; j < particlesArray.length; j++) {
+                    let dx = particlesArray[i].x - particlesArray[j].x;
+                    let dy = particlesArray[i].y - particlesArray[j].y;
+                    let distance = Math.sqrt(dx*dx + dy*dy);
+                    if (distance < 90) {
+                        ctx.strokeStyle = `rgba(0, 255, 204, ${0.15 - (distance/90)*0.15})`;
+                        ctx.lineWidth = 0.5; ctx.beginPath();
+                        ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+                        ctx.lineTo(particlesArray[j].x, particlesArray[j].y); ctx.stroke();
+                    }
                 }
             }
-            setTimeout(runScript, 400);
+            requestAnimationFrame(animateParticles);
+        }
+        initParticles(); animateParticles();
+
+        // --- GLOBAL HIGH-TIER MECHANICAL TOUCH HAPTIC RIPPLE ACTION ---
+        document.addEventListener('click', function(e) {
+            createHapticShockwave(e.clientX, e.clientY, 'magenta');
+            createHapticShockwave(e.clientX, e.clientY, 'cyan');
+        });
+        function createHapticShockwave(x, y, variant) {
+            let ring = document.createElement('div');
+            ring.classList.add('shockwave-ring');
+            if(variant === 'cyan') ring.classList.add('cyan');
+            document.body.appendChild(ring);
+            ring.style.left = `${x}px`; ring.style.top = `${y}px`;
+            setTimeout(() => { ring.remove(); }, 800);
+        }
+
+        // --- CORE FUNCTIONAL PLATFORM LOGIC MANAGER ---
+        const loginJoinBtn = document.getElementById('loginJoinBtn');
+        const keyInput = document.getElementById('keyInput');
+        const submitKeyBtn = document.getElementById('submitKeyBtn');
+        const loginSection = document.getElementById('loginSection');
+        const verificationSection = document.getElementById('verificationSection');
+        const portalLoader = document.getElementById('portalLoader');
+        const mainCardFrame = document.getElementById('mainCardFrame');
+
+        loginJoinBtn.addEventListener('click', () => {
+            keyInput.removeAttribute('disabled');
+            keyInput.placeholder = "Enter access token key...";
+            keyInput.focus();
+        });
+
+        keyInput.addEventListener('input', () => {
+            if (keyInput.value.trim().length > 0) {
+                submitKeyBtn.removeAttribute('disabled');
+                submitKeyBtn.classList.add('active');
+            } else {
+                submitKeyBtn.setAttribute('disabled', 'true');
+                submitKeyBtn.classList.remove('active');
+            }
+        });
+
+        submitKeyBtn.addEventListener('click', () => {
+            if (keyInput.value.trim() === PASSKEY_TOKEN) {
+                submitKeyBtn.style.display = "none";
+                portalLoader.style.display = "flex";
+
+                setTimeout(() => {
+                    mainCardFrame.style.transform = "scale(0.9) rotateY(15deg)";
+                    mainCardFrame.style.opacity = "0";
+                    setTimeout(() => {
+                        loginSection.classList.add('hidden');
+                        verificationSection.classList.remove('hidden');
+                        mainCardFrame.style.transform = "scale(1) rotateY(0deg)";
+                        mainCardFrame.style.opacity = "1";
+                    }, 400);
+                }, 1300);
+            } else {
+                alert("❌ INVALID ACCESS TOKEN! Fetch the exact key from our channel.");
+                keyInput.value = "";
+                submitKeyBtn.setAttribute('disabled', 'true');
+                submitKeyBtn.classList.remove('active');
+            }
+        });
+
+        // --- PIPELINE MATRIX SYSTEM OPERATIONS ---
+        let step1Completed = false;
+        let step2Completed = false;
+        let activeSharesTracker = 0;
+
+        const vFollowBtn = document.getElementById('vFollowBtn');
+        const vReactBtn  = document.getElementById('vReactBtn');
+        const vShareBtn  = document.getElementById('vShareBtn');
+        const shareCounter    = document.getElementById('shareCounter');
+        const stepsCounterTxt  = document.getElementById('stepsCounterTxt');
+        const progressBar     = document.getElementById('progressBar');
+        const lockStatus      = document.getElementById('lockStatus');
+        const fFileLink       = document.getElementById('fFileLink');
+        const fSetupLink      = document.getElementById('fSetupLink');
+
+        vFollowBtn.addEventListener('click', () => {
+            window.open(AD_CHANNEL_1, '_blank');
+            if (!step1Completed) {
+                step1Completed = true;
+                vFollowBtn.className = "task-btn completed";
+                document.getElementById('fIcon').innerText = "✓";
+                
+                vReactBtn.removeAttribute('disabled');
+                vReactBtn.className = "task-btn active";
+                document.getElementById('rIcon').innerText = "⚡";
+                evaluateWorkflowSystem();
+            }
+        });
+
+        vReactBtn.addEventListener('click', () => {
+            window.open(AD_REACT_POST, '_blank');
+            if (!step2Completed) {
+                step2Completed = true;
+                vReactBtn.className = "task-btn completed";
+                document.getElementById('rIcon').innerText = "✓";
+                
+                vShareBtn.removeAttribute('disabled');
+                vShareBtn.className = "task-btn active";
+                evaluateWorkflowSystem();
+            }
+        });
+
+        vShareBtn.addEventListener('click', () => {
+            window.open(`https://api.whatsapp.com/send?text=${WA_FORWARD_MSG}`, '_blank');
+            if (activeSharesTracker < 5) {
+                activeSharesTracker++;
+                shareCounter.innerText = `${activeSharesTracker} / 5`;
+                if (activeSharesTracker === 5) {
+                    vShareBtn.className = "task-btn completed";
+                    evaluateWorkflowSystem();
+                }
+            }
+        });
+
+        function evaluateWorkflowSystem() {
+            let scoreTracker = 0;
+            if (step1Completed) scoreTracker++;
+            if (step2Completed) scoreTracker++;
+            if (activeSharesTracker === 5) scoreTracker++;
+
+            stepsCounterTxt.innerText = scoreTracker;
+            progressBar.style.width = `${(scoreTracker / 3) * 100}%`;
+
+            if (scoreTracker === 3) {
+                lockStatus.innerText = "🔓 ALL STEPS RESOLVED! INJECTORS LIVE";
+                lockStatus.style.color = "#00ff88";
+
+                fFileLink.className = "final-btn download";
+                fFileLink.innerText = "📥 Download Drag File";
+                fFileLink.href = FILE_ZIP_DL;
+                fFileLink.target = "_blank";
+
+                fSetupLink.className = "final-btn setup";
+                fSetupLink.innerText = "🎬 Drag File Setup (Video)";
+                fSetupLink.href = FILE_MP4_DL;
+                fSetupLink.target = "_blank";
+            }
         }
     </script>
 </body>
