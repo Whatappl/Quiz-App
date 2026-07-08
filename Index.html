@@ -312,19 +312,74 @@
         @keyframes rotationalSpin { 100% { transform: rotate(360deg); } }
         @keyframes frameFade { from { opacity:0; transform:scale(0.9); } to { opacity:1; transform:scale(1); } }
 
-        /* Final Secure Unlocked Rewards Dashboard */
-        .rewards-panel { margin-top: 25px; padding-top: 25px; border-top: 1px dashed #222238; }
-        .final-btn {
-            display: block; width: 100%; padding: 18px;
-            font-size: 1.1rem; font-weight: 700; text-decoration: none;
-            border-radius: 12px; margin-bottom: 14px; text-transform: uppercase;
-            letter-spacing: 1px; transition: all 0.3s ease;
+        /* Final Unlocked Unlocked Choice Layout Matrix */
+        .rewards-panel { 
+            margin-top: 25px; 
+            padding-top: 25px; 
+            border-top: 1px dashed #00ffcc; 
+            width: 100%;
         }
-        .final-btn.download { background: #00ff88; color: #000; box-shadow: 0 5px 20px rgba(0,255,136,0.35); }
-        .final-btn.download:hover { transform: translateY(-2px); box-shadow: 0 7px 25px rgba(0,255,136,0.55); }
-        .final-btn.setup { background: #00aaff; color: #fff; box-shadow: 0 5px 20px rgba(0,170,255,0.35); }
-        .final-btn.setup:hover { transform: translateY(-2px); box-shadow: 0 7px 25px rgba(0,170,255,0.55); }
-        .final-btn.locked { background: #0d0d17; color: #3a3a4f; border: 1px solid #1a1a2e; pointer-events: none; }
+        
+        .rewards-split-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 12px; 
+            margin-bottom: 14px; 
+        }
+        
+        .final-btn {
+            display: block; 
+            width: 100%; 
+            padding: 18px;
+            font-size: 1.05rem; 
+            font-weight: 700; 
+            text-decoration: none;
+            border-radius: 12px; 
+            margin-bottom: 14px; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px; 
+            transition: all 0.3s ease;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        
+        /* Premium Toxic Green (FF MAX) */
+        .final-btn.download-max { 
+            background: #00ff88; 
+            color: #000; 
+            box-shadow: 0 5px 20px rgba(0, 255, 136, 0.35); 
+        }
+        .final-btn.download-max:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 7px 25px rgba(0, 255, 136, 0.55); 
+        }
+        
+        /* Cyber Amber Gold (FF NORMAL) */
+        .final-btn.download-normal { 
+            background: #ffbc00; 
+            color: #000; 
+            box-shadow: 0 5px 20px rgba(255, 188, 0, 0.35); 
+        }
+        .final-btn.download-normal:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 7px 25px rgba(255, 188, 0, 0.55); 
+        }
+
+        /* Deep Sky Cyan (Setup Video Guide) */
+        .final-btn.setup { 
+            background: #00aaff; 
+            color: #fff; 
+            box-shadow: 0 5px 20px rgba(0, 170, 255, 0.35); 
+            margin-bottom: 0; 
+        }
+        .final-btn.setup:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 7px 25px rgba(0, 170, 255, 0.55); 
+        }
+
+        /* Fallback Locked rules kept safe */
+        .final-btn.locked { background: #0d0d17; color: #3a3a4f; border: 1px solid #1a1a2e; pointer-events: none; grid-column: span 2; }
+        .final-btn.locked-setup { background: #0d0d17; color: #3a3a4f; border: 1px solid #1a1a2e; pointer-events: none; }
 
         /* Support Nodes footer layout */
         .footer-list { margin-top: 30px; display: flex; flex-direction: column; gap: 10px; text-align: left; }
@@ -337,17 +392,14 @@
 </head>
 <body>
 
-    <!-- Immersive Interactive Particle Canvas Background Engine Element -->
     <canvas id="bgCanvas"></canvas>
 
     <div class="card" id="mainCardFrame">
         
-        <!-- PHASE 1: LOGIN PORTAL -->
         <div id="loginSection">
             <h1>90% DRAG <br><span>FILE OB54</span></h1>
             <div class="status-node"><span></span>SECURITY NODE SECURE</div>
 
-            <!-- 3K Appreciation Message Banner Block -->
             <div class="milestone-banner">
                 🎉 <strong>3K FOLLOWERS COMPLETED!</strong> 🎉<br>
                 Thank you all for the incredible support. To celebrate, the premium OB54 structural engine file is unlocked below!
@@ -369,7 +421,6 @@
 
             <button id="submitKeyBtn" class="submit-btn" disabled>INITIALIZE NODE ENTRY</button>
 
-            <!-- Premium Mechanical CSS Bicycle Loader -->
             <div class="bike-loader-wrap" id="portalLoader">
                 <div class="bicycle">
                     <div class="wheel left"></div>
@@ -386,9 +437,8 @@
             </div>
         </div>
 
-        <!-- PHASE 2: VERIFICATION GATEWAY PANEL -->
         <div id="verificationSection" class="hidden">
-            <div style="font-size:2.8rem; margin-bottom:8px; display:inline-block; animation: bikeRide 1s ease-in-out infinite alternative;">🍃</div>
+            <div style="font-size:2.8rem; margin-bottom:8px; display:inline-block; animation: bikeRide 1s ease-in-out infinite alternate;">🍃</div>
             <h1>Step Verification</h1>
             <p style="font-size: 0.95rem; color: #7e7e94; margin-bottom: 25px; font-weight: 600;">Resolve active secure nodes in succession to unlock core files.</p>
             
@@ -417,12 +467,13 @@
             </div>
 
             <div class="rewards-panel">
-                <a href="#" class="final-btn locked" id="fFileLink">🔒 Locked Drag File</a>
-                <a href="#" class="final-btn locked" id="fSetupLink">🔒 Locked File Setup</a>
+                <div class="rewards-split-grid" id="downloadGridContainer">
+                    <a href="#" class="final-btn locked" id="fFilePlaceholder">🔒 Locked Drag File</a>
+                </div>
+                <a href="#" class="final-btn locked-setup" id="fSetupLink">🔒 Locked File Setup</a>
             </div>
         </div>
 
-        <!-- SHARED CONFIGURABLE INTERACTIVE MOD CONTACT FRAME (Hidden Phone Number Display String) -->
         <div class="contact-mod">
             <a href="https://wa.me/2349137895828?text=Hello%20Fearless,%20I%20need%20help%20with%20the%20OB54%20files!" target="_blank" class="contact-btn">
                 🛠️ CONTACT MAIN MODERATOR
@@ -436,8 +487,11 @@
         const PASSKEY_TOKEN = "FEARLESS-3K";
         const AD_CHANNEL_1  = "https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E";
         const AD_REACT_POST = "https://whatsapp.com/channel/0029VbD11EtAYlUQxZMuK045/100";
-        const FILE_ZIP_DL   = "https://www.mediafire.com/file/q32g6blx5pe5mds/90%2525_DRAG_FILE_HS_x_FEARLESS.zip/file";
-        const FILE_MP4_DL   = "https://www.mediafire.com/file/8jnresrctcn6zf4/90%2525_DRAG_HS_FILE_SETUP.mp4/file";
+        
+        // Exact hardcoded destination asset strings mapping
+        const FILE_FF_MAX    = "https://www.mediafire.com/file/q32g6blx5pe5mds/90%2525_DRAG_FILE_HS_x_FEARLESS.zip/file";
+        const FILE_FF_NORMAL = "https://www.mediafire.com/file/240lhwnw97qt9dm/90%2525_DRAG_FILE_HS_x_FEARLESS.7z/file";
+        const FILE_MP4_DL    = "https://www.mediafire.com/file/8jnresrctcn6zf4/90%2525_DRAG_HS_FILE_SETUP.mp4/file";
 
         const WA_FORWARD_MSG = encodeURIComponent(
 `*LEAKED 90% DRAG FILE FF MAX 🍃👇*
@@ -588,7 +642,7 @@
         const stepsCounterTxt  = document.getElementById('stepsCounterTxt');
         const progressBar     = document.getElementById('progressBar');
         const lockStatus      = document.getElementById('lockStatus');
-        const fFileLink       = document.getElementById('fFileLink');
+        const downloadGridContainer = document.getElementById('downloadGridContainer');
         const fSetupLink      = document.getElementById('fSetupLink');
 
         vFollowBtn.addEventListener('click', () => {
@@ -640,13 +694,14 @@
             progressBar.style.width = `${(scoreTracker / 3) * 100}%`;
 
             if (scoreTracker === 3) {
-                lockStatus.innerText = "🔓 ALL STEPS RESOLVED! INJECTORS LIVE";
+                lockStatus.innerText = "🔓 NODES RESOLVED! SELECT PREFERRED VERSION";
                 lockStatus.style.color = "#00ff88";
 
-                fFileLink.className = "final-btn download";
-                fFileLink.innerText = "📥 Download Drag File";
-                fFileLink.href = FILE_ZIP_DL;
-                fFileLink.target = "_blank";
+                // Injects dual variants dynamically changing "Panel" labels into pure "DRAG FILE" targets
+                downloadGridContainer.innerHTML = `
+                    <a href="${FILE_FF_MAX}" target="_blank" class="final-btn download-max">📥 FF MAX DRAG FILE</a>
+                    <a href="${FILE_FF_NORMAL}" target="_blank" class="final-btn download-normal">📥 FF NORMAL DRAG FILE</a>
+                `;
 
                 fSetupLink.className = "final-btn setup";
                 fSetupLink.innerText = "🎬 Drag File Setup (Video)";
